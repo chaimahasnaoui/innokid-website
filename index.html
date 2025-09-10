@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inno Kid - Jeux Éducatifs Innovants</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --main-color: #4e54c8;
+      --secondary-color: #8f94fb;
+      --accent-color: #ff6b6b;
+      --light-color: #f9f9f9;
+      --dark-color: #333;
+    }
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--light-color);
+      color: var(--dark-color);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: var(--main-color);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      height: 50px;
+      border-radius: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent-color);
+    }
+
+    .share a {
+      color: #fff;
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      transition: color .3s;
+    }
+
+    .share a:hover {
+      color: var(--accent-color);
+    }
+
+    section {
+      padding: 6rem 5% 4rem;
+      min-height: 100vh;
+    }
+
+    .heading {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .heading span { color: var(--main-color); }
+
+    /* HOME */
+    .home {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 6rem;
+    }
+
+    .home .content {
+      flex: 1 1 40rem;
+    }
+
+    .home h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .home h1 span { color: var(--main-color); }
+
+    .home h3 {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .home h4 {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-weight: normal;
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: var(--main-color);
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 30px;
+      transition: background .3s, transform .2s;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: var(--accent-color);
+      transform: scale(1.05);
+    }
+
+    .home .image img {
+      flex: 1 1 40rem;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* ABOUT */
+    .about .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .about .row .image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .about .content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    .about .box-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.about .box-container .box {
+  flex: 1 1 20rem; /* كل بوكس ياخذ عرض مناسب */
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.about .box-container .box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.about .box-container .box i {
+  color: #ff6b35;
+  margin-right: 0.5rem;
+}
+
+.about .video-container {
+  width: 100%;
+  text-align: center;
+}
+
+.about .video-container video,
+.about .video-container img {
+  width: 80%; /* الفيديو يكون أضيق قليلاً من العرض */
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+
+    /* PRODUCTS */
+    .products .box-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .products .box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 1rem;
+      text-align: center;
+      transition: transform .3s;
+    }
+    .products .box:hover { transform: translateY(-5px); }
+
+    .products .box img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .products .box h3 { color: var(--main-color); margin-bottom: .5rem; }
+    .products .box p { font-size: .9rem; color: #666; }
+
+    /* BENEFITS */
+    .benefits .items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .benefits .item {
+      background: #fff;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform .3s;
+    }
+    .benefits .item:hover { transform: scale(1.05); }
+    .benefits .item i {
+      font-size: 2rem;
+      color: var(--accent-color);
+      margin-bottom: .5rem;
+    }
+    .benefits .item h4 {
+      margin-bottom: .5rem;
+      color: var(--main-color);
+    }
+
+
+
+    /* CONTACT */
+    .contact form {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .contact .inputBox {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .contact .inputBox input, .contact select, .contact textarea {
+      flex: 1;
+      padding: .8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .contact textarea { resize: none; }
+    .contact input[type="submit"] {
+      background: var(--main-color);
+      color: #fff;
+      border: none;
+      padding: .8rem 2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    .contact input[type="submit"]:hover {
+      background: var(--accent-color);
+    }
+
+
+    /* MEDIA */
+    @media(max-width: 768px) {
+      nav ul { 
+        flex-direction: column;
+        gap: 1rem;
+        background: var(--main-color);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 1rem 2rem;
+        display: none;
+      }
+      nav.active ul { display: flex; }
+      .home { flex-direction: column-reverse; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <img src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\LOGO.jpg" alt="Logo Inno Kid" style="width: 10%;height: 15%;">
+    <nav>
+      <ul>
+        <li><a href="#home">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#products">Produits</a></li>
+        <li><a href="#benefits">Avantages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="share">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section class="home" id="home">
+    <div class="content">
+      <h1><span>Inno Kid</span> Jeux éducatifs <span>innovants</span></h1>
+      <h4>Inno Kid conçoit et propose des jeux éducatifs innovants et interactifs pour les enfants. Notre mission est de transformer l'apprentissage en une aventure captivante, en stimulant la créativité, la logique et la curiosité naturelle des jeunes esprits à travers le jeu.</h4>
+      <a href="#products" class="button">Découvrir plus</a>
+    </div>
+    <div class="image">
+      <img src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\INNOKID.jpg" alt="Image InnoKid">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h1 class="heading"><span>À </span>propos</h1>
+    <div class="box-container">
+      <div class="box">
+        <h3><i class="fas fa-gamepad"></i> Apprentissage <br> par le jeu</h3>
+        <p> Des concepts éducatifs intégrés dans des aventures passionnantes.</p>
+      </div>
+  
+      <div class="box">
+        <h3><i class="fas fa-leaf"></i> Développement durable</h3>
+        <p>Des jeux conçus pour éveiller les consciences et fabriqués dans une démarche éco-responsable.</p>
+      </div>
+  
+      <div class="box">
+        <h3><i class="fas fa-users"></i> Plaisir en famille</h3>
+        <p>Des activités qui encouragent le partage et les moments complices entre parents et enfants.</p>
+      </div>
+  
+      <div class="box">
+        <h3><i class="fas fa-graduation-cap"></i>Innovation & Créativité </h3>
+        <p>Des produits uniques qui sortent de l'ordinaire pour inspirer les jeunes inventeurs.</p>
+      </div>
+    </div>
+  
+    <div class="video-container">
+      <video src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\INNOKIDVED.mp4" autoplay loop muted></video>
+    </div>
+    <div class="video-container" style="width: 100%;" >
+        <video src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\IMG_5785.MP4" autoplay loop muted></video>
+      </div>
+  </section>
+  
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <h1 class="heading">Nos <span>Produits</span></h1>
+    <div class="box-container">
+      <div class="box">
+        <img src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\photo_2025-09-10_12-24-16.jpg" alt="Produit 1">
+      </div>
+      <div class="box">
+        <img src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\INNOKID2.jpg" alt="Produit 2">
+      </div>
+      <div class="box">
+        <img src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\INNOKID4.jpg" alt="Produit 3">
+        </div>
+      <div class="box">
+        <img src="C:\Users\DABC\OneDrive\Bureau\projects\Innokid\assets\ROLLER.jpg" alt="Produit 5">
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits" id="benefits">
+    <h1 class="heading">Nos <span>Avantages</span></h1>
+    <p style="text-align: center; font-weight: 900;">Des solutions ciblées pour les enfants aux besoins spécifiques (TDA/H, dyslexie), conçues pour :</p>
+    <div class="items">
+      <div class="item">
+        <i class="fas fa-brain"></i>
+        <h4>Captiver l'attention et renforcer la concentration</h4>
+      </div>
+      <div class="item">
+        <i class="fas fa-users"></i>
+        <h4> Réduire la frustration par des défis adaptés</h4>
+      </div>
+      <div class="item">
+        <i class="fas fa-smile"></i>
+        <h4> Valoriser les forces et booster la confiance en soi</h4>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h1 class="heading"><span>Contactez</span>-nous</h1>
+    <form action="mailto:meryembenziane126@gmail.com" method="post" enctype="text/plain">
+        <div class="inputBox">
+            <input type="text" placeholder="Nom complet" name="Nom">
+            <input type="number" placeholder="Numéro de téléphone" name="Téléphone">
+        </div>
+        <div class="inputBox">
+            <input type="email" placeholder="Votre email" name="Email">
+            <select name="Raison">
+                <option value="" disabled selected>Raison du contact</option>
+                <option value="question">Question sur les produits</option>
+                <option value="commande">Commander</option>
+                <option value="support">Support technique</option>
+                <option value="suggestion">Suggestion ou réclamation</option>
+            </select>
+        </div>
+        <textarea name="Message" cols="30" rows="10" placeholder="Message"></textarea>
+        <input type="submit" value="Envoyer" class="button">
+    </form>
+</section>
+<h3 class="credit text-center mx-auto" style="text-align: center;"> Créé par <span>Innokid</span> Tous droits réservés.</h3>
+       
